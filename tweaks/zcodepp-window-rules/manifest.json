@@ -1,0 +1,8 @@
+{
+  "id": "zcodepp.window-rules",
+  "name": "ZCode++ Window Rules",
+  "version": "0.1.0",
+  "description": "Reference main-process tweak: logs window lifecycle, registers a global DevTools shortcut and demonstrates persisted storage.",
+  "scope": "main",
+  "main": "index.js"
+}

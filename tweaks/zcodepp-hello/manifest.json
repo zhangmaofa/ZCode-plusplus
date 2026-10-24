@@ -1,0 +1,8 @@
+{
+  "id": "zcodepp.hello",
+  "name": "ZCode++ Hello",
+  "version": "0.1.0",
+  "description": "Reference renderer tweak: registers a settings page and a visible badge. Also proves the renderer pipeline end to end.",
+  "scope": "renderer",
+  "main": "index.js"
+}

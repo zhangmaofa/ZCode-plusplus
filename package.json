@@ -1,0 +1,16 @@
+{
+  "name": "zcode-plusplus",
+  "version": "0.1.0",
+  "description": "Tweak framework for the ZCode desktop app (Codex++-style): patches app.asar with a fail-open loader and runs user tweaks (renderer / main process) from the user directory.",
+  "license": "MIT",
+  "bin": {
+    "zcodepp": "bin/zcodepp.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true,
+  "scripts": {
+    "test": "node tests/test-asar.js"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$comment": "Runtime-side configuration. settingsInjection.selectors control the native Settings-dialog integration; overlay controls the floating Z++ launcher.",
+  "settingsInjection": {
+    "selectors": {
+      "dialogSelector": "[role=\"dialog\"]",
+      "tabListSelector": "[role=\"tablist\"]",
+      "tabSelector": "[role=\"tab\"]",
+      "panelContainerSelector": null
+    }
+  },
+  "overlay": {
+    "launcher": true,
+    "includeRegex": null
+  }
+}

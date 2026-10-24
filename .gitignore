@@ -1,0 +1,8 @@
+node_modules/
+*.log
+*.log.old
+.DS_Store
+Thumbs.db
+*.zcodepp-tmp
+*.tmp
+test-patched.asar
