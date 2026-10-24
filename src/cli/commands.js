@@ -29,6 +29,14 @@ async function cmdInstall(opts) {
   console.log('Start ZCode normally. Look for the "Z++" floating button, and');
   console.log('log/zcodepp activity under ' + path.join(res.userRoot, 'log'));
   console.log('If ZCode updates itself, run `zcodepp repair` (the hourly watcher does this too).');
+  if (opts.start) {
+    try {
+      spawn(res.installInfo.exePath, [], { detached: true, stdio: 'ignore' }).unref();
+      console.log('ZCode started.');
+    } catch (e) {
+      console.log('could not start ZCode automatically: ' + e.message);
+    }
+  }
 }
 
 async function cmdUninstall(opts) {

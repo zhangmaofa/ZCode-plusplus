@@ -83,6 +83,12 @@ async function install(opts = {}) {
   if (!installInfo) {
     throw new Error('ZCode install not found. Pass --app <path-to-ZCode.exe> or set ZCODEPP_APP.');
   }
+  if (opts.wait && detect.isZCodeRunning()) {
+    if (!opts.quiet) console.log('ZCode is running — waiting for it to exit (close all ZCode windows)...');
+    const exited = detect.waitForZCodeExit(opts.waitTimeoutMs);
+    if (!exited) throw new Error('timed out waiting for ZCode to exit; close it and run install again');
+    if (!opts.quiet) console.log('ZCode exited, continuing.');
+  }
   guardNotRunning(opts.quiet);
   const fuseInfo = guardFuses(installInfo.exePath);
 

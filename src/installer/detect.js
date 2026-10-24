@@ -49,4 +49,22 @@ function isZCodeRunning() {
   }
 }
 
-module.exports = { detectInstall, inspectInstall, isZCodeRunning };
+/** Block until no ZCode.exe remains, polling. Returns false on timeout. */
+function waitForZCodeExit(timeoutMs = 30 * 60 * 1000, pollMs = 2000) {
+  const start = Date.now();
+  let ticks = 0;
+  for (;;) {
+    if (!isZCodeRunning()) return true;
+    if (Date.now() - start > timeoutMs) return false;
+    if (++ticks % 8 === 0) {
+      try {
+        process.stdout.write('still waiting for ZCode to exit...\n');
+      } catch (e) {
+        /* stdout may be closed */
+      }
+    }
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, pollMs);
+  }
+}
+
+module.exports = { detectInstall, inspectInstall, isZCodeRunning, waitForZCodeExit };

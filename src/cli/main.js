@@ -8,8 +8,10 @@ const HELP = `zcodepp ${VERSION} — tweak framework for the ZCode desktop app
 Usage: node zcodepp.js <command> [options]
 
 Commands:
-  install [--app <ZCode.exe>] [--no-watcher] [--user-root <dir>]
+  install [--app <ZCode.exe>] [--no-watcher] [--user-root <dir>] [--wait] [--start]
           Patch app.asar (with backup) and deploy runtime + builtin tweaks.
+          --wait  block until ZCode exits (polls every 2s), then install.
+          --start relaunch ZCode after a successful install.
   uninstall [--purge]
           Restore the original app.asar. --purge also deletes tweaks/config/logs.
   status  Show install state, watcher state and tweak list.
@@ -41,6 +43,8 @@ function parseArgs(argv) {
     if (a === '-q' || a === '--quiet') flags.quiet = true;
     else if (a === '--no-watcher') flags.noWatcher = true;
     else if (a === '--purge') flags.purge = true;
+    else if (a === '--wait') flags.wait = true;
+    else if (a === '--start') flags.start = true;
     else if (a === '--app') flags.app = argv[++i];
     else if (a === '--user-root') flags.userRoot = argv[++i];
     else if (a === '--port') flags.port = parseInt(argv[++i], 10);
